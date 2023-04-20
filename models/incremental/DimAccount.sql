@@ -73,5 +73,5 @@ FROM (
       AND c.enddate > a.effectivedate
       AND c.effectivedate < a.enddate
 ) a
-LEFT JOIN {{ ref('DimBroke') }} b 
+LEFT JOIN {{ ref('DimBroker') }} b 
   ON a.brokerid = b.brokerid;

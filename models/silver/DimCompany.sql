@@ -53,6 +53,6 @@ SELECT
       trim(substring(value, 394, 150)) AS Description
     FROM {{ source('tpcdi', 'FinWire') }}
     WHERE rectype = 'CMP') cmp
-  JOIN {{{ source('tpcdi', 'StatusType') }} st ON cmp.status = st.st_id
+  JOIN {{ source('tpcdi', 'StatusType') }} st ON cmp.status = st.st_id
   JOIN {{ source('tpcdi', 'Industry') }} ind ON cmp.industryid = ind.in_id
 )

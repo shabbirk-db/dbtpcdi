@@ -17,6 +17,7 @@ SELECT
 FROM (
   SELECT * FROM {{ source('tpcdi', 'DailyMarketHistorical') }}
   UNION ALL
-  SELECT * except(cdc_flag, cdc_dsn) FROM LIVE.DailyMarketIncremental) dmh
-JOIN {{ ref('DimDate') }} d 
+  SELECT * except(cdc_flag, cdc_dsn) FROM {{ source('tpcdi', 'DailyMarketIncremental') }}
+  ) dmh
+JOIN {{ source('tpcdi', 'DimDate') }} d 
   ON d.datevalue = dm_date;

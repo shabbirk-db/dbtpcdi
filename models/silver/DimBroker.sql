@@ -13,7 +13,7 @@ SELECT
   employeephone phone,
   true iscurrent,
   1 batchid,
-  (SELECT min(to_date(datevalue)) as effectivedate FROM {{ ref('DimDate') }} ) effectivedate,
+  (SELECT min(to_date(datevalue)) as effectivedate FROM {{ source('tpcdi', 'DimDate') }} ) effectivedate,
   date('9999-12-31') enddate
-FROM  {{ source('tpcdi', 'HR) }}
+FROM  {{ source('tpcdi', 'HR') }}
 WHERE employeejobcode = 314
