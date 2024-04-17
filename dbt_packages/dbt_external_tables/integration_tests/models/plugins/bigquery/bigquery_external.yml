@@ -1,5 +1,3 @@
----
-
 version: 2
 
 sources:
@@ -8,7 +6,7 @@ sources:
     loader: Cloud Storage
 
     tables:
-
+      
       - name: people_csv_unpartitioned
         external:
           location: 'gs://dbt-external-tables-testing/csv/*'
@@ -45,7 +43,7 @@ sources:
               data_type: string
         columns: *cols-of-the-people
         tests: *equal-to-the-people
-
+        
       - name: people_csv_schema_auto_detect
         external:
           location: 'gs://dbt-external-tables-testing/csv/*'
@@ -76,7 +74,7 @@ sources:
 #            format: json
 #        columns: *cols-of-the-people
 #        tests: *equal-to-the-people
-
+#
 #      - name: people_json_partitioned
 #        external:
 #          location: 'gs://dbt-external-tables-testing/json/*'
@@ -86,7 +84,7 @@ sources:
 #          partitions: *parts-of-the-people
 #        columns: *cols-of-the-people
 #        tests: *equal-to-the-people
-
+#        
 #      - name: people_json_schema_auto_detect
 #        external:
 #          location: 'gs://dbt-external-tables-testing/json/*'
